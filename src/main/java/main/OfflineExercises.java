@@ -10,13 +10,14 @@ public class OfflineExercises {
 	// multChar("AAbb") → "AAAAAAbbbbbb"
 	// multChar("Hi-There") → "HHHiii---TTThhheeerrreee"
 
-	public char multChar(String input) {
+	public String multChar(String input) {
+		StringBuilder sb = new StringBuilder();
 		for (int i = 0; i < input.length(); i++) {
-			int index = input.charAt(i);
-		StringBuilder charString = ((char)index)	
-		StringBuilder threeChar = charString,charString,charString;
-		return threeChar;
+			String index = input.substring(i, i + 1);
+			sb.append(index + index + index);
 		}
+
+		return sb.toString();
 	}
 
 	// Return the string (backwards) that is between the first and last appearance
@@ -74,13 +75,15 @@ public class OfflineExercises {
 //		char index1 = input.charAt(i-1);
 //		int index2 = input.charAt(i-2);
 //		int index3 = input.charAt(i-3);
-		
+
 //		if (index1 == "v")
-		int i = input.length(); {
-			if(input.substring(i-3) == "dev") 
-			return true;
+		int i = input.length();
+		{
+			if (input.substring(i - 3) == "dev")
+				return true;
 			else
-		return false;}
+				return false;
+		}
 	}
 
 	// Given a string, return the length of the largest "block" in the string.
@@ -106,17 +109,26 @@ public class OfflineExercises {
 
 	public int amISearch(String arg1) {
 		int count = 0;
-		for (int i = 0; i < arg1.length()-1; i++) {
-			if(arg1.substring(i) == "a" && arg1.substring(i+1)== "m" && i==0 && arg1.substring(i+2)== " ");
-			count++;
-			if(arg1.substring(i) == "a" && arg1.substring(i+1)== "m" && i==(arg1.length()-2) && arg1.substring(i-1) ==" ");
-			count++;
-			if(arg1.substring(i) == "a" && arg1.substring(i+1)== "m" && arg1.substring(i-1)== " " && arg1.substring(i+2)==" ") {
-				count++;
-			
+		if (arg1.toLowerCase().equals("am")) {
+			return ++count;
+		} else {
+			for (int i = 0; i < arg1.length() - 4; i++) {
+				if (arg1.toLowerCase().substring(i, i + 4).equals(" am ")) {
+					count++;
+				}
 			}
+
+			if (arg1.toLowerCase().substring(0, 3).equals("am ")) {
+				count++;
+			}
+
+			if (arg1.toLowerCase().substring(arg1.length() - 3).equals(" am")) {
+				count++;
+
+			}
+
+			return count;
 		}
-		return count;
 
 	}
 
@@ -130,15 +142,15 @@ public class OfflineExercises {
 	// fizzBuzz(15) → "fizzbuzz"
 
 	public String fizzBuzz(int arg1) {
-		if (isDivisible(arg1,3) && (isDivisible(arg1,5)))
+		if (isDivisible(arg1, 3) && (isDivisible(arg1, 5)))
 			return "fizzbuzz";
-		else if (isDivisible(arg1,3))
+		else if (isDivisible(arg1, 3))
 			return "fizz";
-		else if (isDivisible(arg1,5))
+		else if (isDivisible(arg1, 5))
 			return "buzz";
-		 
-			else
-		return null;
+
+		else
+			return null;
 
 	}
 
